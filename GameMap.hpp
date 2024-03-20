@@ -8,17 +8,17 @@
 
 class GameMap : public DisplayObject {
 public:
-  GameMap(sf::Vector2<int> const &ap, sf::Vector2<int> const &p, 
-    sf::Vector2<int> const &size, int borderThickness, 
-    sf::Vector3<uint8_t> const &color, 
-    sf::Vector3<uint8_t> const &borderColor = {0, 0, 0});
+  GameMap(int apX, int apY, int pX, int pY, int width, int height, 
+    int borderThickness, uint8_t rFill, uint8_t gFill, uint8_t bFill, 
+    uint8_t rStroke = 0, uint8_t gStroke = 0, uint8_t bStroke = 0,
+    int objCap = 32);
 
-  void push(DisplayObject *object);
+  void add(DisplayObject *object);
+  std::unique_ptr<DisplayObject> remove(int index);
 
   void draw(sf::RenderWindow &w) override;
 
 private:
-  sf::RectangleShape primitive;
 
   // Пул объектов, хранимый полем.
   std::vector<std::unique_ptr<DisplayObject>> objects;

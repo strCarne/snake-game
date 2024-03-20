@@ -1,17 +1,16 @@
 #include "DisplayObject.hpp"
 
-DisplayObject::DisplayObject(sf::Vector2<int> const &ap, 
-  sf::Vector2<int> const &p, sf::Vector2<int> const &size, 
-  int borderThickness, sf::Vector3<uint8_t> const &color, 
-  sf::Vector3<uint8_t> const &borderColor, bool drawBoundaries) {
+DisplayObject::DisplayObject(int apX, int apY, int pX, int pY, int width, 
+  int height, int borderThickness, uint8_t rFill, uint8_t gFill, uint8_t bFill, 
+  uint8_t rStroke, uint8_t gStroke, uint8_t bStroke) {
   
-  xAP = ap.x;
-  yAP = ap.y;
+  xAP = apX;
+  yAP = apY;
 
-  x1 = p.x;
-  y1 = p.y;
-  x2 = x1 + size.x;
-  y2 = y1 + size.y;
+  x1 = pX;
+  y1 = pY;
+  x2 = x1 + width;
+  y2 = y1 + height;
 
   xClient1 = x1 + borderThickness;
   yClient1 = y1 + borderThickness;
@@ -20,27 +19,12 @@ DisplayObject::DisplayObject(sf::Vector2<int> const &ap,
 
   this->borderThickness = borderThickness;
 
-  r = color.x;
-  g = color.y;
-  b = color.z;
+  r = rFill;
+  g = gFill;
+  b = bFill;
 
-  rB = borderColor.x;
-  bB = borderColor.y;
-  gB = borderColor.z;
+  rB = rStroke;
+  bB = gStroke;
+  gB = bStroke;
 
-  this->drawBoundaries = drawBoundaries;
-
-  updateBoundaries();
-}
-
-void DisplayObject::renderBoundaries(sf::RenderWindow &w) {
-  w.draw(boundaries);
-}
-
-void DisplayObject::updateBoundaries() {
-  boundaries.setPosition({static_cast<float>(x1), static_cast<float>(y1)});
-  boundaries.setSize({static_cast<float>(x2 - x1), static_cast<float>(y2 - y1)});
-  boundaries.setFillColor(sf::Color::Transparent);
-  boundaries.setOutlineThickness(boundaryThickness);
-  boundaries.setOutlineColor(sf::Color::Red);
 }

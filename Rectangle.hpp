@@ -5,16 +5,11 @@
 
 class Rectangle : public DisplayObject {
 public:
-  Rectangle(sf::Vector2<int> const &ap, sf::Vector2<int> const &p, 
-    sf::Vector2<int> const &size, int borderThickness, 
-    sf::Vector3<uint8_t> const &color, 
-    sf::Vector3<uint8_t> const &borderColor = {0, 0, 0},
-    bool drawBoundaries = false);
+  Rectangle(int apX, int apY, int pX, int pY, int width, int height, 
+    int borderThickness, uint8_t rFill, uint8_t gFill, uint8_t bFill, 
+    uint8_t rStroke = 0, uint8_t gStroke = 0, uint8_t bStroke = 0);
 
   void draw(sf::RenderWindow &w) override;
-
-private:
-    sf::RectangleShape primitive;
 };
 
 #endif

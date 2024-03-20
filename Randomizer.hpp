@@ -55,9 +55,7 @@ private:
 
     // BT (border thickness) - ширина рамки
     static const int minBT = 0;
-    static const int maxBT = 5;
-
-    static const bool showBoundaries = false;
+    static const int maxBT = 10;
 };
 
 #endif

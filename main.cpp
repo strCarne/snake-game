@@ -16,8 +16,8 @@ int main() {
 
   window.setFramerateLimit(FPS_LIMIT);
 
-  GameMap gameMap({0, 0}, {0, 0}, {W_WIDTH, W_HEIGHT}, 30, {0xFF, 0xFF, 0xFF}, 
-    {0x24, 0x23, 0x24});
+  GameMap gameMap(0, 0, 0, 0, W_WIDTH, W_HEIGHT, 30, 0xFF, 0xFF, 0xFF, 
+    0x24, 0x23, 0x24);
 
   Randomizer randomizer;
 
@@ -27,11 +27,11 @@ int main() {
     {gameMap.yClient1 + 2, gameMap.yClient2 - 2}, {60, 100}};
 
   for (int i = 0; i < numOfObjectsInClass; i++) {
-    gameMap.push(randomizer.rectangle(params));
-    gameMap.push(randomizer.circle(params));
-    gameMap.push(randomizer.ellipse(params));
-    gameMap.push(randomizer.triangle(params));
-    gameMap.push(randomizer.line(params));
+      // gameMap.add(randomizer.rectangle(params));
+      // gameMap.add(randomizer.circle(params));
+      // gameMap.add(randomizer.ellipse(params));
+      // gameMap.add(randomizer.triangle(params));
+      gameMap.add(randomizer.line(params));
   }
 
   sf::Event event;

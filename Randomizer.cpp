@@ -28,8 +28,11 @@ DisplayObject *Randomizer::rectangle(sf::Vector2<int> const &xRange,
   sf::Vector2<int> p = point(xRange.x, xRange.y - width, 
     yRange.x, yRange.y - height);
   
-  return new Rectangle({0, 0}, p, {width, height}, number(minBT, maxBT), color(), 
-    color(), showBoundaries);
+  sf::Vector3<uint8_t> f = color();
+  sf::Vector3<uint8_t> b = color();
+
+  return new Rectangle(0, 0, p.x, p.y, width, height, number(minBT, maxBT), f.x,
+    f.y, f.z, b.x, b.y, b.z);
 }
 
 DisplayObject *Randomizer::rectangle(RandomObjectParams const &params) {
@@ -43,8 +46,12 @@ DisplayObject *Randomizer::circle(sf::Vector2<int> const &xRange,
   int d = number(sizeRange.x,sizeRange.y);
   int r = d>>1;
   sf::Vector2<int> p = point(xRange.x, xRange.y - d, yRange.x, yRange.y - d);
-  return new Circle({0, 0}, p, r, number(minBT, maxBT), color(), color(), 
-    showBoundaries);
+
+  sf::Vector3<uint8_t> f = color();
+  sf::Vector3<uint8_t> b = color();
+
+  return new Circle(0, 0, p.x, p.y, r, number(minBT, maxBT), f.x, f.y, f.z, b.x, 
+    b.y, b.z);
 }
 
 DisplayObject *Randomizer::circle(RandomObjectParams const &params) {
@@ -58,10 +65,13 @@ DisplayObject *Randomizer::ellipse(sf::Vector2<int> const &xRange,
   int d1 = number(sizeRange.x,sizeRange.y);
   int d2 = number(sizeRange.x,sizeRange.y);
 
-  sf::Vector2<int> r = {d1>>1, d2>>1};
   sf::Vector2<int> p = point(xRange.x, xRange.y - d1, yRange.x, yRange.y - d2);
-  return new Ellipse({0, 0}, p, r, number(minBT, maxBT), color(), color(), 
-    showBoundaries);
+
+  sf::Vector3<uint8_t> f = color();
+  sf::Vector3<uint8_t> b = color();
+
+  return new Ellipse(0, 0, p.x, p.y, d1>>1, d2>>1, number(minBT, maxBT), f.x, 
+    f.y, f.z, b.x, b.y, b.z);
 }
 
 DisplayObject *Randomizer::ellipse(RandomObjectParams const &params) {
@@ -77,7 +87,10 @@ DisplayObject *Randomizer::line(sf::Vector2<int> const &xRange,
   sf::Vector2<int> p1 = point(xRange.x, xRange.y - width, yRange.x, 
     yRange.y - height);
   sf::Vector2<int> p2 = {p1.x + width, p1.y + height};
-  return new Line({0, 0}, p1, p2, color(), showBoundaries);
+
+  sf::Vector3<uint8_t> f = color();
+
+  return new Line(0, 0, p1.x, p1.y, p2.x, p2.y, f.x, f.y, f.z);
 }
 
 DisplayObject *Randomizer::line(RandomObjectParams const &params) {
@@ -100,13 +113,16 @@ DisplayObject *Randomizer::triangle(sf::Vector2<int> const &xRange,
 
   int wHalf = width / 2;
   int hHalf = height / 2;
+
+  sf::Vector2<int> p1 = point(rect.x1, rect.x2 - wHalf - wD, rect.y1, rect.y2 - hHalf - hD);
+  sf::Vector2<int> p2 = point(rect.x1 + wHalf + wD, rect.x2, rect.y1, rect.y2 - hHalf - hD);
+  sf::Vector2<int> p3 = point(rect.x1, rect.x2 - wHalf - wD, rect.y1 + hHalf + hD, rect.y2); 
   
-  return new Triangle({0, 0}, 
-    point(rect.x1, rect.x2 - wHalf - wD, rect.y1, rect.y2 - hHalf - hD),
-    point(rect.x1 + wHalf + wD, rect.x2, rect.y1, rect.y2 - hHalf - hD),
-    point(rect.x1, rect.x2 - wHalf - wD, rect.y1 + hHalf + hD, rect.y2), 
-    number(minBT, maxBT), color(),
-    color(), showBoundaries);
+  sf::Vector3<uint8_t> f = color();
+  sf::Vector3<uint8_t> b = color();
+  
+  return new Triangle(0, 0, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y,
+    number(minBT, maxBT), f.x, f.y, f.z, b.x, b.y, b.z);
 
 }
 

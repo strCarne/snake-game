@@ -5,14 +5,10 @@
 
 class Line : public DisplayObject {
 public:
-  Line(sf::Vector2<int> const &ap, sf::Vector2<int> const &p1, 
-    sf::Vector2<int> const &p2, sf::Vector3<uint8_t> const &color,
-    bool drawBoundaries = false);
+  Line(int apX, int apY, int p1X, int p1Y, int p2X, int p2Y, uint8_t rFill, 
+  uint8_t gFill, uint8_t bFill);
 
   void draw(sf::RenderWindow &w) override;
-
-private:
-    sf::VertexArray primitive;
 };
 
 #endif

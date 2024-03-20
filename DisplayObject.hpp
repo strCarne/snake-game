@@ -25,37 +25,15 @@ public:
   // Цвет рамки.
   uint8_t rB, gB, bB;
 
-  // Флаг, влияющий на отрисовку прямоугольника, ограничивающего объект. Если
-  // значение истинно, то рамка отрисовывается, иначе - нет.
-  bool drawBoundaries;
-
   // Метод для отрисовки, должен переопредялять объектом-наследником.
   virtual void draw(sf::RenderWindow &w) = 0;
 
   virtual ~DisplayObject() {}
 
 protected:
-
-  // Метод отрисовки границ фигуры.
-  void renderBoundaries(sf::RenderWindow &w);
-
-  // Обновляет графический примитив рамки в соотвествии с текущими координатами
-  // объекта.
-  void updateBoundaries();
-
-  DisplayObject(sf::Vector2<int> const &ap, sf::Vector2<int> const &p, 
-    sf::Vector2<int> const &size, int borderThickness, 
-    sf::Vector3<uint8_t> const &color, 
-    sf::Vector3<uint8_t> const &borderColor = {0, 0, 0},
-    bool drawBoundaries = false);
-
-private:
-
-  // Толщина рамки, ограничивающей объект.
-  static const int boundaryThickness = 2;
-
-  // Графический примитив для отображения рамки.
-  sf::RectangleShape boundaries;
+  DisplayObject(int apX, int apY, int pX, int pY, int width, int height, 
+    int borderThickness, uint8_t rFill, uint8_t gFill, uint8_t bFill, 
+    uint8_t rStroke = 0, uint8_t gStroke = 0, uint8_t bStroke = 0);
 };
 
 #endif
