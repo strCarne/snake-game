@@ -1,0 +1,5 @@
+/Users/strCarne/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Users/strCarne/Applications/CLion.app/Contents/bin/ninja/mac/x64/ninja -G Ninja -S /Users/strCarne/Desktop/snake-game -B /Users/strCarne/Desktop/snake-game/cmake-build-debug
+-- Found SFML 2.6.1 in /usr/local/lib/cmake/SFML
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/strCarne/Desktop/snake-game/cmake-build-debug
