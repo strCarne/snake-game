@@ -1,0 +1,44 @@
+  // c = r.color();
+  // gameMap.add(
+  //     new Circle(0, 0, x, y, h >> 1, 0.1, 0.0, 0.0, 0.0, 0, 4, c.x, c.y,
+  //     c.z));
+  // y += h + d;
+  // gameMap.add(new Circle(0, 0, x, y, h >> 1, 0.0, 0.0, 0.001, 0.0, 0, 4, c.x,
+  //                        c.y, c.z));
+  // y += h + d;
+
+  // c = r.color();
+  // gameMap.add(new Ellipse(0, 0, x, y, w, h >> 1, 0.1, 0.0, 0.0, 0.0, 0, 4,
+  // c.x,
+  //                         c.y, c.z));
+  // y += h + d;
+  // gameMap.add(new Ellipse(0, 0, x, y, w, h >> 1, 0.0, 0.0, 0.001, 0.0, 0, 4,
+  //                         c.x, c.y, c.z));
+  // y += h + d;
+
+  // c = r.color();
+  // gameMap.add(
+  //     new Rectangle(0, 0, x, y, w, h, 0.1, 0.0, 0.0, 0.0, 0, 4, c.x, c.y,
+  //     c.z));
+  // y += h + d;
+  // gameMap.add(new Rectangle(0, 0, x, y, w, h, 0.0, 0.0, 0.001, 0.0, 0, 4,
+  // c.x,
+  //                           c.y, c.z));
+  // y += h + d;
+
+  // gameMap.add(
+  //     new Line(0, 0, x, y, x + w, y + h, 0.1, 0.0, 0.0, 0.0, 0, 0, 0, 0));
+  // y += h + d;
+  // gameMap.add(
+  //     new Line(0, 0, x, y, x + w, y + h, 0.0, 0.0, 0.001, 0.0, 0, 0, 0, 0));
+  // y += h + d;
+
+  // c = r.color();
+  // gameMap.add(new Triangle(0, 0, x, y, x + w, y, x, y + h, 0.1, 0.0, 0.0,
+  // 0.0,
+  //                          0, 4, c.x, c.y, c.z));
+  // y += h + d;
+  // gameMap.add(new Triangle(0, 0, x, y, x + w, y, x, y + h, 0.0, 0.0, 0.001,
+  // 0.0,
+  //                          0, 4, c.x, c.y, c.z));
+  // y += h + d;

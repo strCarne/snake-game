@@ -1,23 +1,24 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle(int apX, int apY, int p1X, int p1Y, int p2X, int p2Y, int p3X, 
-  int p3Y, int borderThickness, uint8_t rFill, uint8_t gFill, uint8_t bFill, 
-  uint8_t rStroke, uint8_t gStroke, uint8_t bStroke): DisplayObject(apX, apY, 0, 
-  0, 0, 0, borderThickness, rFill, gFill, bFill, rStroke, gStroke, bStroke) {
+Triangle::Triangle(int apX, int apY, int p1X, int p1Y, int p2X, int p2Y,
+                   int p3X, int p3Y, int borderThickness, uint8_t rFill,
+                   uint8_t gFill, uint8_t bFill, uint8_t rStroke,
+                   uint8_t gStroke, uint8_t bStroke)
+    : DisplayObject(apX, apY, 0, 0, 0, 0, borderThickness, rFill, gFill, bFill,
+                    rStroke, gStroke, bStroke) {
 
-  sf::Vector2<int> massCenter = {(p1X + p2X + p3X) / 3, 
-    (p1Y + p2Y + p3Y) / 3};
+  sf::Vector2<int> massCenter = {(p1X + p2X + p3X) / 3, (p1Y + p2Y + p3Y) / 3};
 
   sf::Vector4<int> l1(p1X, p1Y, p2X, p2Y);
   sf::Vector4<int> l2(p1X, p1Y, p3X, p3Y);
   sf::Vector4<int> l3(p2X, p2Y, p3X, p3Y);
 
-  sf::Vector4<int> l1Inner = Controller::getClosestToApParallelLine(massCenter,
-    l1, borderThickness);
-  sf::Vector4<int> l2Inner = Controller::getClosestToApParallelLine(massCenter,
-    l2, borderThickness);
-  sf::Vector4<int> l3Inner = Controller::getClosestToApParallelLine(massCenter,
-    l3, borderThickness);
+  sf::Vector4<int> l1Inner =
+      Controller::getClosestToApParallelLine(massCenter, l1, borderThickness);
+  sf::Vector4<int> l2Inner =
+      Controller::getClosestToApParallelLine(massCenter, l2, borderThickness);
+  sf::Vector4<int> l3Inner =
+      Controller::getClosestToApParallelLine(massCenter, l3, borderThickness);
 
   sf::Vector2<int> p1Inner = Controller::getLinesIntersection(l1Inner, l2Inner);
   sf::Vector2<int> p2Inner = Controller::getLinesIntersection(l1Inner, l3Inner);
@@ -48,6 +49,36 @@ Triangle::Triangle(int apX, int apY, int p1X, int p1Y, int p2X, int p2Y, int p3X
   yClient2 = y2 - borderThickness;
 }
 
+Triangle::Triangle(int apX, int apY, int p1X, int p1Y, int p2X, int p2Y,
+                   int p3X, int p3Y, double v0X, double v0Y, double aX,
+                   double aY, int createdAt, int borderThickness, uint8_t rFill,
+                   uint8_t gFill, uint8_t bFill, uint8_t rStroke,
+                   uint8_t gStroke, uint8_t bStroke)
+    : Triangle(apX, apY, p1X, p1Y, p2X, p2Y, p3X, p3Y, borderThickness, rFill,
+               gFill, bFill, rStroke, gStroke, bStroke) {
+
+  this->s0X = x1;
+  this->s0Y = y1;
+
+  this->v0X = v0X;
+  this->v0Y = v0Y;
+
+  this->aX = aX;
+  this->aY = aY;
+
+  this->createdAt = createdAt;
+}
+
+Triangle::Triangle(int apX, int apY, int p1X, int p1Y, int p2X, int p2Y,
+                   int p3X, int p3Y, double v, double a, double dir,
+                   int createdAt, int borderThickness, uint8_t rFill,
+                   uint8_t gFill, uint8_t bFill, uint8_t rStroke,
+                   uint8_t gStroke, uint8_t bStroke)
+    : Triangle(apX, apY, p1X, p1Y, p2X, p2Y, p3X, p3Y, v * cos(dir),
+               v * sin(dir), a * cos(dir), a * sin(dir), createdAt,
+               borderThickness, rFill, gFill, bFill, rStroke, gStroke,
+               bStroke) {}
+
 void Triangle::draw(sf::RenderWindow &w) {
   sf::ConvexShape primitive;
   primitive.setPointCount(3);
@@ -58,4 +89,20 @@ void Triangle::draw(sf::RenderWindow &w) {
   primitive.setOutlineColor(sf::Color(rB, gB, bB));
   primitive.setOutlineThickness(borderThickness);
   w.draw(primitive);
+}
+
+void Triangle::move(int dX, int dY) {
+  DisplayObject::move(dX, dY);
+
+  if (dX != 0) {
+    p1X += dX;
+    p2X += dX;
+    p3X += dX;
+  }
+
+  if (dY != 0) {
+    p1Y += dY;
+    p2Y += dY;
+    p3Y += dY;
+  }
 }

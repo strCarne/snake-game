@@ -5,24 +5,19 @@ namespace sf {
 
 class EllipseShape : public sf::Shape {
 public:
-
-  explicit EllipseShape(const sf::Vector2f& radius = sf::Vector2f(0, 0)):
-    m_radius(radius) {
+  explicit EllipseShape(const sf::Vector2f &radius = sf::Vector2f(0, 0))
+      : m_radius(radius) {
     update();
   }
 
-  void setRadius(const sf::Vector2f& radius) {
+  void setRadius(const sf::Vector2f &radius) {
     m_radius = radius;
     update();
   }
 
-  const sf::Vector2f& getRadius() const {
-    return m_radius;
-  }
+  const sf::Vector2f &getRadius() const { return m_radius; }
 
-  virtual size_t getPointCount() const {
-    return 30;
-  }
+  virtual size_t getPointCount() const { return 30; }
 
   virtual sf::Vector2f getPoint(size_t index) const {
     static const float pi = 3.141592654f;
@@ -36,4 +31,4 @@ private:
   sf::Vector2f m_radius;
 };
 
-}
+} // namespace sf

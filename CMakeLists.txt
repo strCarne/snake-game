@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(snake-game)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(
         snake-game
@@ -38,6 +39,9 @@ add_executable(
         Controller.cpp
 
         Vector4.hpp
+
+        Button.hpp
+        Button.cpp
 )
 
 include_directories(/usr/local/include)

@@ -7,6 +7,7 @@ struct RandomObjectParams {
   sf::Vector2<int> const &xRange;
   sf::Vector2<int> const &yRange;
   sf::Vector2<int> const &sizeRange;
+  // sf::Vector2<double>
 };
 
 #endif
