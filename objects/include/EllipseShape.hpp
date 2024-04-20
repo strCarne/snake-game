@@ -1,3 +1,6 @@
+#ifndef SFML__ELLIPSE_SHAPE__EXTENSION_
+#define SFML__ELLIPSE_SHAPE__EXTENSION_
+
 #include <SFML/Graphics.hpp>
 #include <cmath>
 
@@ -32,3 +35,5 @@ private:
 };
 
 } // namespace sf
+
+#endif // SFML__ELLIPSE_SHAPE__EXTENSION_

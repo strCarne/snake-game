@@ -1,0 +1,18 @@
+#ifndef OBJECTS
+#define OBJECTS
+
+#include "include/Circle.hpp"
+#include "include/Controller.hpp"
+#include "include/DisplayObject.hpp"
+#include "include/Ellipse.hpp"
+#include "include/EllipseShape.hpp"
+#include "include/Line.hpp"
+#include "include/ObjectFactory.hpp"
+#include "include/ObjectParams.hpp"
+#include "include/RandomObjectParams.hpp"
+#include "include/Randomizer.hpp"
+#include "include/Rectangle.hpp"
+#include "include/Triangle.hpp"
+#include "include/Vector4.hpp"
+
+#endif // OBJECTS

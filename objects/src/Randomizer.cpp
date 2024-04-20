@@ -116,11 +116,11 @@ DisplayObject *Randomizer::triangle(sf::Vector2<int> const &xRange,
   int hHalf = height / 2;
 
   sf::Vector2<int> p1 =
-      point(rect.x1, rect.x2 - wHalf - wD, rect.y1, rect.y2 - hHalf - hD);
+      point(rect.x1_, rect.x2_ - wHalf - wD, rect.y1_, rect.y2_ - hHalf - hD);
   sf::Vector2<int> p2 =
-      point(rect.x1 + wHalf + wD, rect.x2, rect.y1, rect.y2 - hHalf - hD);
+      point(rect.x1_ + wHalf + wD, rect.x2_, rect.y1_, rect.y2_ - hHalf - hD);
   sf::Vector2<int> p3 =
-      point(rect.x1, rect.x2 - wHalf - wD, rect.y1 + hHalf + hD, rect.y2);
+      point(rect.x1_, rect.x2_ - wHalf - wD, rect.y1_ + hHalf + hD, rect.y2_);
 
   sf::Vector3<uint8_t> f = color();
   sf::Vector3<uint8_t> b = color();

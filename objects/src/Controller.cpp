@@ -2,61 +2,61 @@
 #include <cmath>
 #include <cstdlib>
 
-double Controller::calcEuclideanDistance(sf::Vector2<int> const &p1,
+double Controller::CalcEuclideanDistance(sf::Vector2<int> const &p1,
                                          sf::Vector2<int> const &p2) {
 
   int dX = p2.x - p1.x;
   int dY = p2.y - p1.y;
 
-  return calcEuclide(dX, dY);
+  return CalcEuclideanDistance(dX, dY);
 }
 
-bool Controller::fpvAreEqual(float v1, float v2) {
+bool Controller::FpvAreEqual(float v1, float v2) {
   return std::abs(v2 - v1) < EPSILON;
 }
 
-bool Controller::fpvAreEqual(double v1, double v2) {
+bool Controller::FpvAreEqual(double v1, double v2) {
   return std::abs(v2 - v1) < EPSILON;
 }
 
-sf::Vector4<int> Controller::getParallelLine(sf::Vector4<int> const &line,
+sf::Vector4<int> Controller::GetParallelLine(sf::Vector4<int> const &line,
                                              int d) {
 
-  sf::Vector2<int> v = {line.x2 - line.x1, line.y2 - line.y1};
+  sf::Vector2<int> v = {line.x2_ - line.x1_, line.y2_ - line.y1_};
 
-  sf::Vector2<int> p1 = getParallelPoint(v, {line.x1, line.y1}, d);
-  sf::Vector2<int> p2 = getParallelPoint(v, {line.x2, line.y2}, d);
+  sf::Vector2<int> p1 = GetParallelPoint(v, {line.x1_, line.y1_}, d);
+  sf::Vector2<int> p2 = GetParallelPoint(v, {line.x2_, line.y2_}, d);
 
   return {p1.x, p1.y, p2.x, p2.y};
 }
 
 sf::Vector4<int>
-Controller::getClosestToApParallelLine(sf::Vector2<int> const &ap,
+Controller::GetClosestToApParallelLine(sf::Vector2<int> const &ap,
                                        sf::Vector4<int> const &line, int d) {
 
-  sf::Vector2<int> v = {line.x2 - line.x1, line.y2 - line.y1};
+  sf::Vector2<int> v = {line.x2_ - line.x1_, line.y2_ - line.y1_};
 
-  sf::Vector2<int> p1 = getParallelPoint(v, {line.x1, line.y1}, d);
-  sf::Vector2<int> tmpP1 = getParallelPoint(v, {line.x1, line.y1}, -d);
+  sf::Vector2<int> p1 = GetParallelPoint(v, {line.x1_, line.y1_}, d);
+  sf::Vector2<int> tmpP1 = GetParallelPoint(v, {line.x1_, line.y1_}, -d);
 
-  double d1 = calcEuclideanDistance(ap, p1);
-  double d2 = calcEuclideanDistance(ap, tmpP1);
+  double d1 = CalcEuclideanDistance(ap, p1);
+  double d2 = CalcEuclideanDistance(ap, tmpP1);
 
   if (d2 < d1) {
     d = -d;
     p1 = tmpP1;
   }
 
-  sf::Vector2<int> p2 = getParallelPoint(v, {line.x2, line.y2}, d);
+  sf::Vector2<int> p2 = GetParallelPoint(v, {line.x2_, line.y2_}, d);
 
   return {p1.x, p1.y, p2.x, p2.y};
 }
 
-double Controller::calcEuclide(double v1, double v2) {
+double Controller::CalcEuclideanDistance(double v1, double v2) {
   return std::sqrt(std::pow(v1, 2) + std::pow(v2, 2));
 }
 
-sf::Vector2<int> Controller::getParallelPoint(sf::Vector2<int> const &v,
+sf::Vector2<int> Controller::GetParallelPoint(sf::Vector2<int> const &v,
                                               sf::Vector2<int> const &ap,
                                               int d) {
 
@@ -73,16 +73,16 @@ sf::Vector2<int> Controller::getParallelPoint(sf::Vector2<int> const &v,
   return {ap.x + (int)n.x, ap.y + (int)n.y};
 }
 
-sf::Vector2<int> Controller::getLinesIntersection(sf::Vector4<int> const &l1,
-                                                  sf::Vector4<int> &l2) {
+sf::Vector2<int> Controller::GetLinesIntersection(sf::Vector4<int> const &line1,
+                                                  sf::Vector4<int> &line2) {
 
-  int a1 = l1.y2 - l1.y1;
-  int b1 = l1.x1 - l1.x2;
-  int c1 = a1 * l1.x1 + b1 * l1.y1;
+  int a1 = line1.y2_ - line1.y1_;
+  int b1 = line1.x1_ - line1.x2_;
+  int c1 = a1 * line1.x1_ + b1 * line1.y1_;
 
-  int a2 = l2.y2 - l2.y1;
-  int b2 = l2.x1 - l2.x2;
-  int c2 = a2 * l2.x1 + b2 * l2.y1;
+  int a2 = line2.y2_ - line2.y1_;
+  int b2 = line2.x1_ - line2.x2_;
+  int c2 = a2 * line2.x1_ + b2 * line2.y1_;
 
   int det = a1 * b2 - a2 * b1;
 
@@ -96,11 +96,11 @@ sf::Vector2<int> Controller::getLinesIntersection(sf::Vector4<int> const &l1,
   return {x, y};
 }
 
-int Controller::calcPosition(int s0, double v0, double a, int t) {
+int Controller::CalcPosition(int s0, double v0, double a, int t) {
   return round(s0 + v0 * t + a * t * t / 2);
 }
 
-double Controller::calcAngle(double x, double y) {
+double Controller::CalcAngle(double x, double y) {
   bool x_is_pos = x >= 0;
   bool y_is_pos = y >= 0;
 
@@ -125,9 +125,7 @@ double Controller::calcAngle(double x, double y) {
   return angle_x + M_PI_2 + (angle_y * 2);
 }
 
-double Controller::DegreeToRadian(double angle) {
-  return angle * M_PI / 180;
-}
+double Controller::DegreeToRadian(double angle) { return angle * M_PI / 180; }
 
 double Controller::ProjectOnX(double value, double alpha) {
   return value * std::cos(alpha);
