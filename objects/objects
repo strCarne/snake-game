@@ -1,18 +1,20 @@
 #ifndef OBJECTS
 #define OBJECTS
 
-#include "include/Circle.hpp"
-#include "include/Controller.hpp"
-#include "include/DisplayObject.hpp"
-#include "include/Ellipse.hpp"
-#include "include/EllipseShape.hpp"
-#include "include/Line.hpp"
-#include "include/ObjectFactory.hpp"
-#include "include/ObjectParams.hpp"
-#include "include/RandomObjectParams.hpp"
-#include "include/Randomizer.hpp"
-#include "include/Rectangle.hpp"
-#include "include/Triangle.hpp"
-#include "include/Vector4.hpp"
+#include "include/circle.h"
+#include "include/controller.h"
+#include "include/display_object.h"
+#include "include/ellipse.h"
+#include "include/ellipse_shape.h"
+#include "include/line.h"
+#include "include/menu.h"
+#include "include/menu_item.h"
+#include "include/object_factory.h"
+#include "include/object_params.h"
+#include "include/random_object_params.h"
+#include "include/randomizer.h"
+#include "include/rectangle.h"
+#include "include/triangle.h"
+#include "include/vector4.h"
 
 #endif // OBJECTS

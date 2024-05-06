@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 include_directories(include)
 
-file(GLOB LIB_SOURCE CONFIGURE_DEPENDS "src/*.cpp")
+file(GLOB LIB_SOURCE CONFIGURE_DEPENDS "src/*.cc")
 
 add_library(${PROJECT_NAME} SHARED ${LIB_SOURCE})
 

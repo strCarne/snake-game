@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/objects.dir/src/circle.cc.o"
+  "CMakeFiles/objects.dir/src/circle.cc.o.d"
+  "CMakeFiles/objects.dir/src/color_picker.cc.o"
+  "CMakeFiles/objects.dir/src/color_picker.cc.o.d"
+  "CMakeFiles/objects.dir/src/controller.cc.o"
+  "CMakeFiles/objects.dir/src/controller.cc.o.d"
+  "CMakeFiles/objects.dir/src/display_object.cc.o"
+  "CMakeFiles/objects.dir/src/display_object.cc.o.d"
+  "CMakeFiles/objects.dir/src/ellipse.cc.o"
+  "CMakeFiles/objects.dir/src/ellipse.cc.o.d"
+  "CMakeFiles/objects.dir/src/line.cc.o"
+  "CMakeFiles/objects.dir/src/line.cc.o.d"
+  "CMakeFiles/objects.dir/src/menu.cc.o"
+  "CMakeFiles/objects.dir/src/menu.cc.o.d"
+  "CMakeFiles/objects.dir/src/menu2.cc.o"
+  "CMakeFiles/objects.dir/src/menu2.cc.o.d"
+  "CMakeFiles/objects.dir/src/menu_item.cc.o"
+  "CMakeFiles/objects.dir/src/menu_item.cc.o.d"
+  "CMakeFiles/objects.dir/src/menu_item2.cc.o"
+  "CMakeFiles/objects.dir/src/menu_item2.cc.o.d"
+  "CMakeFiles/objects.dir/src/object_factory.cc.o"
+  "CMakeFiles/objects.dir/src/object_factory.cc.o.d"
+  "CMakeFiles/objects.dir/src/object_params.cc.o"
+  "CMakeFiles/objects.dir/src/object_params.cc.o.d"
+  "CMakeFiles/objects.dir/src/randomizer.cc.o"
+  "CMakeFiles/objects.dir/src/randomizer.cc.o.d"
+  "CMakeFiles/objects.dir/src/rectangle.cc.o"
+  "CMakeFiles/objects.dir/src/rectangle.cc.o.d"
+  "CMakeFiles/objects.dir/src/text.cc.o"
+  "CMakeFiles/objects.dir/src/text.cc.o.d"
+  "CMakeFiles/objects.dir/src/triangle.cc.o"
+  "CMakeFiles/objects.dir/src/triangle.cc.o.d"
+  "libobjects.dylib"
+  "libobjects.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/objects.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
